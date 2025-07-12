@@ -9,7 +9,7 @@ from io import BytesIO
 # ------------------------
 
 def preprocess(df):
-    df = df[df['Status'] == 'Complete'].copy()
+    df = df[df['Status'].isin(['Complete', 'Active'])].copy()
     df['Start'] = pd.to_datetime(df['Start'])
     df['End'] = pd.to_datetime(df['End'])
     df['Created At'] = pd.to_datetime(df['Created At']).dt.date
